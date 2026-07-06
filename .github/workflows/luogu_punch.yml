@@ -24,3 +24,5 @@ jobs:
         env:
           LUOGU_COOKIE: ${{ secrets.LUOGU_COOKIE }}
         run: python main.py
+
+#test
