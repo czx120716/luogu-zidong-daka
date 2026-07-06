@@ -10,19 +10,17 @@ def luogu_punch():
 
     url = "https://www.luogu.com.cn/index/ajax_punch"
     
-    # 更完整的浏览器伪装头
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-        "Accept": "application/json, text/javascript, */*; q=0.01",
-        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Referer": "https://www.luogu.com.cn/",
-        "Origin": "https://www.luogu.com.cn",
-        "x-requested-with": "XMLHttpRequest",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "Connection": "keep-alive"
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
+        'Referer': 'https://www.luogu.com.cn/',
+        'Origin': 'https://www.luogu.com.cn',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        'Connection': 'keep-alive',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
     }
 
     cookies = {}
@@ -33,14 +31,12 @@ def luogu_punch():
             cookies[key] = value
 
     try:
-        # 使用 session 保持连接状态
         session = requests.Session()
         session.headers.update(headers)
         session.cookies.update(cookies)
         
         response = session.get(url, timeout=15)
 
-        # 打印响应内容前100个字符用于调试
         print(f"响应状态码: {response.status_code}")
         print(f"响应内容预览: {response.text[:200]}")
 
